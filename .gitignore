@@ -1,0 +1,6 @@
+/build/
+*.o
+echo_server
+.DS_Store
+.vscode/
+.idea/
