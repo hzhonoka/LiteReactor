@@ -8,7 +8,7 @@ nonblock_echo
 litereactor
 /server
 
-# CMake 构建目录（后面会用到）
+# CMake 构建目录
 /build/
 /cmake-build-*/
 CMakeCache.txt
