@@ -81,13 +81,13 @@ int main() {
                     write(fd, buf, n);
                 } else if (n == 0) {
                     std::cout << "Client closed.\n";
-                    close(fd);
-                    epoll_ctl(epollfd, EPOLL_CTL_DEL, fd, nullptr); // epoll中删除该fd
+                    epoll_ctl(epollfd, EPOLL_CTL_DEL, fd, nullptr);
+                    close(fd); // epoll中删除该fd
                 } else {
                     if (errno != EAGAIN && errno != EWOULDBLOCK) {
                         perror("read");
-                        close(fd);
                         epoll_ctl(epollfd, EPOLL_CTL_DEL, fd, nullptr);
+                        close(fd);
                     }
                 }
             }
