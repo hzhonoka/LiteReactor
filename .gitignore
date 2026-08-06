@@ -3,29 +3,26 @@
 *.obj
 *.exe
 *.out
-echo_server
-nonblock_echo
-litereactor
-/server
-
-# CMake 构建目录
 /build/
 /cmake-build-*/
 CMakeCache.txt
 CMakeFiles/
-Makefile
 cmake_install.cmake
+Makefile
+test_threadpool
+test_epoll_echo
+echo_server
+epoll_echo
+litereactor
+/server
 
-# IDE 配置
+# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 
-# OS 垃圾文件
+# OS
 .DS_Store
 Thumbs.db
-
-*.log
-*.tmp
