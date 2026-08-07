@@ -11,7 +11,7 @@ int main() {
     {
         pool.execute([i, &print_mtx] 
         {
-            std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
             std::lock_guard<std::mutex> lock(print_mtx);
             std::cout << "Task " << i << " running in thread " 
                     << std::this_thread::get_id() << "\n";
