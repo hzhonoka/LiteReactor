@@ -20,3 +20,5 @@ target_link_libraries(test_epoll_echo pthread)
 
 # 测试：Buffer
 add_executable(test_buffer tests/test_buffer.cpp src/base/Buffer.cpp)
+
+add_executable(test_memorypool tests/test_memorypool.cpp src/base/MemoryPool.cpp)

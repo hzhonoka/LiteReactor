@@ -13,6 +13,7 @@ A lightweight high-performance HTTP server built with C++17.
 | Day -5 | Epoll-based echo server (multi-client) | ✅ |
 | Day -4 | ThreadPool with condition variable | ✅ |
 | Day -3 | Buffer (network buffer) | ✅ |
+| Day -2 | MemoryPool (fixed block allocator) | ✅ |
 
 ## Build
 
@@ -21,3 +22,4 @@ mkdir -p build && cd build
 cmake ..
 make
 ./test_buffer
+./test_memorypool
