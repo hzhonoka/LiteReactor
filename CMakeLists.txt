@@ -24,3 +24,6 @@ add_executable(test_buffer tests/test_buffer.cpp src/base/Buffer.cpp)
 add_executable(test_memorypool tests/test_memorypool.cpp src/base/MemoryPool.cpp)
 
 add_executable(test_inetaddress tests/test_inetaddress.cpp src/net/InetAddress.cpp)
+
+add_executable(test_socket tests/test_socket.cpp src/net/InetAddress.cpp src/net/Socket.cpp)
+
