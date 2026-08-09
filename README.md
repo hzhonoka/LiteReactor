@@ -14,6 +14,7 @@ A lightweight high-performance HTTP server built with C++17.
 | Day -4 | ThreadPool with condition variable | ✅ |
 | Day -3 | Buffer (network buffer) | ✅ |
 | Day -2 | MemoryPool (fixed block allocator) | ✅ |
+| Day -1 | InetAddress + Socket RAII | ✅ |
 
 ## Build
 
@@ -21,5 +22,5 @@ A lightweight high-performance HTTP server built with C++17.
 mkdir -p build && cd build
 cmake ..
 make
-./test_buffer
-./test_memorypool
+./test_inetaddress
+./test_socket
