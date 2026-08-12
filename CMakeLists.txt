@@ -27,3 +27,7 @@ add_executable(test_inetaddress tests/test_inetaddress.cpp src/net/InetAddress.c
 
 add_executable(test_socket tests/test_socket.cpp src/net/InetAddress.cpp src/net/Socket.cpp)
 
+add_executable(test_eventloop tests/test_eventloop.cpp 
+    src/net/EventLoop.cpp src/net/Poller.cpp src/net/Channel.cpp
+    src/net/InetAddress.cpp src/base/Buffer.cpp)
+target_link_libraries(test_eventloop pthread)

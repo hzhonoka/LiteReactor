@@ -15,6 +15,7 @@ A lightweight high-performance HTTP server built with C++17.
 | Day -3 | Buffer (network buffer) | ✅ |
 | Day -2 | MemoryPool (fixed block allocator) | ✅ |
 | Day -1 | InetAddress + Socket RAII | ✅ |
+| Day 0 | Channel + Poller + EventLoop | ✅ |
 
 ## Build
 
@@ -22,5 +23,4 @@ A lightweight high-performance HTTP server built with C++17.
 mkdir -p build && cd build
 cmake ..
 make
-./test_inetaddress
-./test_socket
+./test_eventloop

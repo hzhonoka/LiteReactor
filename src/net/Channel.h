@@ -23,6 +23,7 @@ public:
     // 启用/禁用事件
     void enableReading() { events_ |= EPOLLIN; update(); }  // 加上 EPOLLIN
     void disableAll() { events_ = 0; update(); }      // 清零
+    void remove();
 
     int fd() const { return fd_; }
     int events() const { return events_; }
