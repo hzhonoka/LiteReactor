@@ -31,3 +31,9 @@ add_executable(test_eventloop tests/test_eventloop.cpp
     src/net/EventLoop.cpp src/net/Poller.cpp src/net/Channel.cpp
     src/net/InetAddress.cpp src/base/Buffer.cpp)
 target_link_libraries(test_eventloop pthread)
+
+add_executable(test_acceptor tests/test_acceptor.cpp 
+    src/net/Acceptor.cpp src/net/Socket.cpp src/net/InetAddress.cpp
+    src/net/Channel.cpp src/net/Poller.cpp src/net/EventLoop.cpp
+    src/base/Buffer.cpp)
+target_link_libraries(test_acceptor pthread)
