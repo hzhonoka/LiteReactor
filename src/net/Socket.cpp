@@ -53,3 +53,9 @@ void Socket::setReuseAddr(bool on) {
     int opt = on ? 1 : 0;
     ::setsockopt(fd_, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
 }
+
+void Socket::shutdownWrite() {
+    if (::shutdown(fd_, SHUT_WR) < 0) {
+        // 错误处理，可选
+    }
+}

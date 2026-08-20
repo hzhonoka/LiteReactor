@@ -38,6 +38,8 @@ public:
     char* beginWrite();
     void hasWritten(size_t len);
 
+    ssize_t readFd(int fd, int* savedErrno = nullptr);
+
 private:
     char* begin();                    // buffer_ 起始地址
     const char* begin() const;

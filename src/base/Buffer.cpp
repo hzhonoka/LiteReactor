@@ -1,5 +1,8 @@
 #include "base/Buffer.h"
 #include <algorithm>
+#include <sys/uio.h>
+#include <errno.h>
+#include <unistd.h>
 
 Buffer::Buffer()
     : buffer_(kCheapPrepend + kInitialSize),  // vector 初始容量
@@ -109,4 +112,29 @@ void Buffer::makeSpace(size_t len) {
         readerIndex_ = kCheapPrepend;  // 移到预留头部后面
         writerIndex_ = readerIndex_ + readable;  
     }
+}
+
+ssize_t Buffer::readFd(int fd, int* savedErrno) {
+    char extrabuf[65536];  // 栈上临时缓冲
+    struct iovec vec[2];
+    
+    size_t writable = writableBytes();
+    vec[0].iov_base = beginWrite();
+    vec[0].iov_len = writable;
+    vec[1].iov_base = extrabuf;
+    vec[1].iov_len = sizeof(extrabuf);
+    
+    // readv：读到两个地方，防止 Buffer 不够
+    int iovcnt = (writable < sizeof(extrabuf)) ? 2 : 1;
+    ssize_t n = readv(fd, vec, iovcnt);
+    
+    if (n < 0) {
+        if (savedErrno) *savedErrno = errno;
+    } else if (static_cast<size_t>(n) <= writable) {
+        hasWritten(n);
+    } else {
+        hasWritten(writable);
+        append(extrabuf, n - writable);
+    }
+    return n;
 }

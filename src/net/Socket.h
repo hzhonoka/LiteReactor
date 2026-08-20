@@ -17,6 +17,7 @@ public:
     int accept(InetAddress* peerAddr);
     void setNonBlocking();
     void setReuseAddr(bool on);
+    void shutdownWrite();
 
 private:
     int fd_;

@@ -23,6 +23,9 @@ public:
     // 启用/禁用事件
     void enableReading() { events_ |= EPOLLIN; update(); }  // 加上 EPOLLIN
     void disableAll() { events_ = 0; update(); }      // 清零
+    void enableWriting() { events_ |= EPOLLOUT; update(); }
+    void disableWriting() { events_ &= ~EPOLLOUT; update(); }
+    bool isWriting() const { return events_ & EPOLLOUT; }
     void remove();
 
     int fd() const { return fd_; }

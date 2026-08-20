@@ -2,7 +2,7 @@
 
 A lightweight high-performance HTTP server built with C++17.
 
-> 🚧 Work in progress. Deadline extended to 8/25 for quality.
+> 🚧 Work in progress. Deadline: 8/25.
 
 ## Current Progress
 
@@ -16,7 +16,8 @@ A lightweight high-performance HTTP server built with C++17.
 | Day -2 | MemoryPool (fixed block allocator) | ✅ |
 | Day -1 | InetAddress + Socket RAII | ✅ |
 | Day 0 | Channel + Poller + EventLoop | ✅ |
-| Day 1 | Acceptor (new connection handler) | ✅ |
+| Day 1 | Acceptor | ✅ |
+| Day 2 | TcpConnection (echo working) | ✅ |
 
 ## Build
 
@@ -24,4 +25,5 @@ A lightweight high-performance HTTP server built with C++17.
 mkdir -p build && cd build
 cmake ..
 make
-./test_acceptor
+./test_tcpconnection
+# Then: telnet localhost 8080
