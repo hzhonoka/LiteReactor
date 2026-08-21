@@ -42,6 +42,8 @@ public:
     const InetAddress& peerAddress() const { return peerAddr_; }
     bool connected() const { return state_ == kConnected; }
 
+    EventLoop* getLoop() const { return loop_; }
+
 private:
     enum StateE { kConnecting, kConnected, kDisconnecting, kDisconnected };
     
