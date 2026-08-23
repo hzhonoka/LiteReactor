@@ -17,13 +17,16 @@ A lightweight high-performance HTTP server built with C++17.
 | Day -1 | InetAddress + Socket RAII | ✅ |
 | Day 0 | Channel + Poller + EventLoop | ✅ |
 | Day 1 | Acceptor | ✅ |
-| Day 2 | TcpConnection (echo working) | ✅ |
+| Day 2 | TcpConnection | ✅ |
+| Day 3 | TcpServer (echo working) | ✅ |
+| Day 4 | HttpParser + HttpResponse + HttpContext | ✅ |
+| Day 5 | HttpServer (browser can access static files) | ✅ |
 
-## Build
+## Build & Run
 
 ```bash
 mkdir -p build && cd build
 cmake ..
 make
-./test_tcpconnection
-# Then: telnet localhost 8080
+./test_httpserver
+# Open http://localhost:8080/ in browser

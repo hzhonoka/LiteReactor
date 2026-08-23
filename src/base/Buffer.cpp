@@ -71,6 +71,11 @@ std::string Buffer::retrieveAsString(size_t len) {
     
 }
 
+void Buffer::retrieveUntil(const char* end) {
+    retrieve(end - peek());  // 把 [peek, end) 标记为已读
+}
+
+
 // ========== 追加数据 ==========
 void Buffer::append(const std::string& str) {
     append(str.data(), str.size());

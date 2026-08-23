@@ -26,6 +26,8 @@ public:
     void retrieveAll();
     std::string retrieveAllAsString();
     std::string retrieveAsString(size_t len);
+    void retrieveUntil(const char* end);
+
 
     // 追加数据
     void append(const std::string& str);
