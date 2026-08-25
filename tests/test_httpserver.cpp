@@ -39,20 +39,27 @@ int main() {
                                   Buffer* buf) {
         // 从连接里取出属于它的 HttpContext
         HttpContext* context = static_cast<HttpContext*>(conn->getContext());
-        
-        if (!context->parseRequest(buf)) {
-            return;  // 数据不够，等下次
-        }
-        
-        if (context->gotAll()) {
+
+        // 循环 buffer 里可能存在的多个完整请求
+        while (buf->readableBytes() > 0) {
+            if (!context->parseRequest(buf)) {
+                // 数据不够一个完整请求，或者解析错误
+                break;
+            }
+
+            if (!context->gotAll()) {
+                // 理论上不会到这里，等下次数据
+                break;
+            }
+
             const HttpRequest& req = context->request();
             std::cout << "收到请求: " << req.path() << "\n";
-            
+
             // 构造响应
             std::string filename = "www" + (req.path() == "/" ? "/index.html" : req.path());
             std::string body = readFile(filename);
-            
-            // false = Keep-Alive！
+
+            // false = Keep-Alive
             HttpResponse response(false);
             if (!body.empty()) {
                 response.setStatusCode(HttpResponse::k200Ok);
@@ -64,14 +71,12 @@ int main() {
                 response.setStatusMessage("Not Found");
                 response.setBody("<h1>404 Not Found</h1>");
             }
-            
+
             Buffer output;
             response.appendToBuffer(&output);
             conn->send(output.retrieveAllAsString());
-            
-            // 不 shutdown！保持连接！
-            
-            // 翻到新的一页，等下一个请求
+
+            // 处理完一个请求，重置 HttpContext 准备下一个
             context->reset();
         }
     });

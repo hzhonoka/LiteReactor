@@ -25,6 +25,7 @@ bool HttpContext::parseRequest(Buffer* buf) {
                 const char* start = buf->peek();
                 if (start == crlf) {
                     // 空行！Header 结束
+                    buf->retrieveUntil(crlf + 2);  // 把空行也取走
                     state_ = kGotAll;
                     hasMore = false;
                 } else {

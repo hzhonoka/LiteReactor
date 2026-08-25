@@ -16,6 +16,8 @@ TcpConnection::TcpConnection(EventLoop* loop, const std::string& name,
       localAddr_(localAddr),
       peerAddr_(peerAddr),context_(nullptr)
 {
+    socket_->setNonBlocking();  // ← 加这里！新连接设为非阻塞
+
     // 设置 Channel 的四个回调
     channel_->setReadCallback(
         std::bind(&TcpConnection::handleRead, this));

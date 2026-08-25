@@ -28,7 +28,7 @@ void Acceptor::listen() {
 void Acceptor::handleRead() {
     InetAddress peerAddr;  // 客人的地址
     int connfd = acceptSocket_.accept(&peerAddr);  // 接电话，拿到客人的分机号
-    
+
     if (connfd >= 0) {
         if (newConnectionCallback_) {
             // 喊前台："来客人了，分机号是 connfd，地址是 peerAddr"
