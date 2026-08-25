@@ -44,6 +44,9 @@ public:
 
     EventLoop* getLoop() const { return loop_; }
 
+    void setContext(void* context) { context_ = context; }
+    void* getContext() const { return context_; }
+
 private:
     enum StateE { kConnecting, kConnected, kDisconnecting, kDisconnected };
     
@@ -73,4 +76,5 @@ private:
     ConnectionCallback connectionCallback_;
     MessageCallback messageCallback_;
     CloseCallback closeCallback_;
+    void* context_ = nullptr;
 };

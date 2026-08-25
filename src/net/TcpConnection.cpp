@@ -14,7 +14,7 @@ TcpConnection::TcpConnection(EventLoop* loop, const std::string& name,
       socket_(new Socket(sockfd)),
       channel_(new Channel(loop, sockfd)),
       localAddr_(localAddr),
-      peerAddr_(peerAddr)
+      peerAddr_(peerAddr),context_(nullptr)
 {
     // 设置 Channel 的四个回调
     channel_->setReadCallback(

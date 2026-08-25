@@ -54,6 +54,7 @@ add_executable(test_httpserver tests/test_httpserver.cpp
     src/http/HttpContext.cpp src/http/HttpResponse.cpp
     src/net/TcpServer.cpp src/net/Acceptor.cpp src/net/TcpConnection.cpp
     src/net/Socket.cpp src/net/InetAddress.cpp src/net/Channel.cpp
-    src/net/Poller.cpp src/net/EventLoop.cpp src/base/Buffer.cpp)
+    src/net/Poller.cpp src/net/EventLoop.cpp src/base/Buffer.cpp
+    src/base/AsyncLogger.cpp)
 target_link_libraries(test_httpserver pthread)
 

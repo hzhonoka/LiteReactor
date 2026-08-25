@@ -13,6 +13,10 @@ void HttpResponse::appendToBuffer(Buffer* output) const {
         output->append("Connection: Keep-Alive\r\n");
     }
 
+    char bodyLen[32];
+    snprintf(bodyLen, sizeof(bodyLen), "Content-Length: %zu\r\n", body_.size());
+    output->append(bodyLen);
+
     for (const auto& header : headers_) {
         output->append(header.first);
         output->append(": ");
